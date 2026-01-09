@@ -15,12 +15,12 @@
 
 
     <script>
-        for (let i = 1; i <= 64; i++) {
+        for (let casilla = 0; casilla <= 63; casilla++) {
             let tecla = document.createElement('div')
 
-            esFilaPar = Math.floor(i / 8) % 2 == 0
+            esFilaPar = Math.floor(casilla / 8) % 2 == 0
 
-            numero = i
+            numero = casilla
             if(esFilaPar){
                 numero++
             }
@@ -32,6 +32,12 @@
                 tecla.className = "tecla-negra"
             }
 
+            if(casilla < 16){
+                tecla.textContent= "O"
+            }
+            else if(casilla > 47){
+                tecla.textContent= "X"
+            }
 
             let contenedor = document.getElementById("tablero")
             contenedor.appendChild(tecla)
