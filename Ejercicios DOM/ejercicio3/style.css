@@ -1,0 +1,14 @@
+#contenedor{
+    width: 330px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px
+}
+
+.tecla-numerica{
+    background-color: #2596be;
+    color: white;
+    font-size: 80px;
+    width: 100px;
+    height: 100px;
+}

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Ejercicio 1 - Teclado númerico</title>
+</head>
+
+<body>
+    <h1 id="titulo">Ejercicio 1 - Teclado númerico</h1>
+    <div id="contenedor">
+        <!-- <div class="tecla-numerica">1</div> -->
+    </div>
+
+    <script>
+        for (let i = 1; i <= 20; i++) {
+            console.log("Prueba")
+            let tecla = document.createElement('div')
+            tecla.textContent = `${i}`
+            tecla.className = "tecla-numerica"
+
+            if (i % 2 == 0) {
+                tecla.style.backgroundColor = "blue";
+            }
+            else if (i % 3 == 0) {
+                tecla.style.backgroundColor = "yellow";
+            }
+
+            let contenedor = document.getElementById("contenedor")
+            contenedor.appendChild(tecla)
+        }
+    </script>
+</body>
+
+</html>
