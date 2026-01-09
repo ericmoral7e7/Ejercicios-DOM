@@ -1,0 +1,26 @@
+
+#tablero{
+    width: 900px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.tecla-blanca{
+    background-color: #ffffff;
+    color: white;
+    font-size: 80px;
+    width: 100px;
+    height: 100px;
+    border: 1px solid black;
+}
+
+.tecla-negra{
+    background-color: #000000;
+    color: white;
+    font-size: 80px;
+    width: 100px;
+    height: 100px;
+    border: 1px solid black;
+}
+
+

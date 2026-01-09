@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style_ajedrez.css">
+    <title>Ejercicio 1 - Teclado númerico</title>
+</head>
+
+<body>
+    <div id="tablero">
+
+    </div>
+
+
+    <script>
+        for (let i = 1; i <= 64; i++) {
+            let tecla = document.createElement('div')
+
+            esFilaPar = Math.floor(i / 8) % 2 == 0
+
+            numero = i
+            if(esFilaPar){
+                numero++
+            }
+
+            if (numero % 2 == 0) {
+                tecla.className = "tecla-blanca"
+            }
+            else {
+                tecla.className = "tecla-negra"
+            }
+
+
+            let contenedor = document.getElementById("tablero")
+            contenedor.appendChild(tecla)
+        }
+    </script>
+</body>
+
+</html>
