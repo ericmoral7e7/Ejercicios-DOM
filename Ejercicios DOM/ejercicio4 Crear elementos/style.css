@@ -1,0 +1,25 @@
+#contenedor{
+    display: flex;
+    align-items: start;
+}
+#contenedor-letras{
+    width: 1000px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px
+}
+
+#contenedor-numeros{
+    width: 330px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px
+}
+
+.tecla-numerica{
+    background-color: #be8125;
+    color: white;
+    font-size: 80px;
+    width: 100px;
+    height: 100px;
+}
