@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1 - Tipo Numbers</title>
+    <style>
+        .ejercicio {
+            border: 1px black solid;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+
+        .resultado {
+            background-color: rgb(195, 192, 192);
+        }
+    </style>
+</head>
+
+<body>
+    <h1 id="titulo">Ejercicios - Tipo numbers</h1>
+
+    <div class="ejercicio">
+        <h3>Ejercicio 1</h3>
+        <p>Haz una función que de dos números pasados por parámetros indica (saca por consola) cúal de ellos es mayor.
+        </p>
+        <div class="resultado" id="resultado1">
+            <!-- Aquí es dónde ira el teclado. -->
+            aqui el resultado
+
+        </div>
+    </div>
+
+    <div class="ejercicio">
+        <h3>Ejercicio 2</h3>
+        <p>Haz una función que calcule (sin usar *) la multiplicación de dos números.
+        </p>
+        <div class="resultado" id="resultado2">
+            <!-- Aquí es dónde ira el teclado. -->
+            aqui el resultado
+
+        </div>
+    </div>
+
+    <div class="ejercicio">
+        <h3>Ejercicio 3</h3>
+        <p>Utilizando la función anterior haz una función que calcule la multiplicación de 3 números.
+        </p>
+        <div class="resultado" id="resultado3">
+            <!-- Aquí es dónde ira el teclado. -->
+            aqui el resultado
+
+        </div>
+    </div>
+
+    <div class="ejercicio">
+        <h3>Ejercicio 4</h3>
+        <p>Crea una función que permita calcular la nota media de 3 notas para que devuelva la media con 1 decimal.
+        </p>
+        <div class="resultado" id="resultado4">
+            <!-- Aquí es dónde ira el teclado. -->
+            aqui el resultado
+
+        </div>
+    </div>
+
+    <script>
+        //Ejercicio 1
+        function numeroMayor(num1, num2) {
+            let resultado = ""
+            if (num1 > num2) {
+                resultado = `El número mayor és ${num1}`
+            }
+            else {
+                resultado = `El número mayor és ${num2}`
+            }
+            return resultado
+            // return num1<num2?num1:num2;
+        }
+
+        //Ejercicio 2
+        function multiplicacion(num1, num2) {
+            let resultado = 0
+
+            for (let i = 0; i < num2; i++) {
+                resultado += num1
+            }
+
+            return resultado
+        }
+
+        //Ejercicio 3
+        function tripleMultiplicacion(num1, num2, num3) {
+            resultado = multiplicacion(multiplicacion(num1, num2), num3)
+            return resultado
+        }
+
+        //Ejercicio 4
+        function notaMedia(num1, num2, num3) {
+            let resultado = ((num1 + num2 + num3) / 3)
+            return resultado.toFixed(1)
+        }
+
+        //Ejercicio 5
+        function cumplenPropiedad() {
+            let numerosQueCumplen = []
+
+            for (let numero = 0; numero <= 10000; numero++) {
+
+                let calculoDeCifras = 0
+
+                let numeroComoString = numero.toString()
+
+                for (i = 0; i < numeroComoString.length; i++) {
+                    let caracter = numeroComoString[i]
+                    let resultadoPorCaracter = caracter * caracter * caracter
+                    calculoDeCifras += resultadoPorCaracter
+                    // console.log(`Para el número ${numeroComoString}, caracter ${caracter}, el cubo és ${resultadoPorCaracter}`)
+                }
+
+                if (calculoDeCifras == numero) {
+                    console.log(numero)
+                    // numerosQueCumplen.push(numero)
+                }
+            }
+
+            return calculoDeCifras
+        }
+
+        document.getElementById('resultado1').textContent = `${numeroMayor(16, 11)}`
+
+        document.getElementById('resultado2').textContent = `El resultado de la multiplicación és ${multiplicacion(3, 5)}`
+
+        document.getElementById('resultado3').textContent = `El resultado de la triple multiplicación és ${tripleMultiplicacion(3, 2, 2)}`
+
+        document.getElementById('resultado4').textContent = `La nota media és ${notaMedia(3, 6, 10)}`
+
+        console.log(`${cumplenPropiedad().toString}`)
+    </script>
+</body>
+
+</html>

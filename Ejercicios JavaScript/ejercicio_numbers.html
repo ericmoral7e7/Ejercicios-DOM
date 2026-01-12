@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <title>Ejercicio 1 - Teclado númerico</title>
+</head>
+
+<body>
+    <script>
+        //Ejercicio 1
+        function numeroMayor(num1, num2) {
+            if (num1 > num2) {
+                console.log(`El número mayor és ${num1}`)
+            }
+            else {
+                console.log(`El número mayor és ${num2}`)
+            }
+        }
+
+        //Ejercicio 2
+        function multiplicacion(num1, num2) {
+            let resultado = 0
+
+            for (let i = 0; i < num2; i++) {
+                resultado += num1
+            }
+
+
+            return resultado
+        }
+
+        //Ejercicio 3
+        function tripleMultiplicacion(num1, num2, num3) {
+            resultado = multiplicacion(multiplicacion(num1, num2), num3)
+            return resultado
+        }
+
+        //Ejercicio 4
+        function notaMedia() {
+
+        }
+
+        numeroMayor(16, 11)
+        console.log(`El resultado de la multiplicación és ${multiplicacion(3, 5)}`)
+        console.log(`El resultado de la triple multiplicación és ${tripleMultiplicacion(3, 2, 2)}`)
+
+
+    </script>
+</body>
+
+</html>
