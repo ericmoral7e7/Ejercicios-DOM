@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1 - Tipo Numbers</title>
+    <style>
+        .ejercicio {
+            border: 1px black solid;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+
+        .resultado {
+            background-color: rgb(195, 192, 192);
+        }
+    </style>
+</head>
+
+<body>
+    <h1 id="titulo">Ejercicios - Tipo numbers</h1>
+
+    <div class="ejercicio">
+        <h3>Ejercicio 1</h3>
+        <p>Crea una función llamada saludar que tenga un parámetro obligatorio, nombre, y un parámetro opcional, saludo, que por defecto sea "Hola". La función debe devolver un saludo personalizado utilizando el nombre proporcionado y, el saludo adicional.
+        </p>
+        <div class="resultado" id="resultado1">
+            <!-- Aquí es dónde ira el teclado. -->
+            aqui el resultado
+
+        </div>
+    </div>
+
+    <div class="ejercicio">
+        <h3>Ejercicio 2</h3>
+        <p>Crea una función llamada calcular que reciba dos números como parámetros obligatorios, num1 y num2, y un parámetro opcional, operacion, que represente la operación matemática a realizar (por defecto, suma). La función debe devolver el resultado de la operación especificada entre los dos números.
+
+        </p>
+        <div class="resultado" id="resultado2">
+            <!-- Aquí es dónde ira el teclado. -->
+            aqui el resultado
+
+        </div>
+    </div>
+
+    <script>
+        function saludar(nombre, saludo="Hola"){
+            return `${saludo} ${nombre}`
+        }
+
+        function calcular(num1, num2, operacion="suma"){
+            let resultado 
+            switch(operacion){
+                case "suma":
+                    resultado = num1 + num2
+                break;
+
+                case "resta":
+                    resultado = num1 - num2
+                break;
+
+                case "multiplicacion":
+                    resultado = num1 * num2
+                break;
+
+                case "division":
+                    resultado = num1 / num2
+                break;
+            }
+
+            return resultado
+        }
+
+        document.getElementById("resultado1").innerText = saludar("Èric")
+        document.getElementById("resultado2").innerText = calcular(1,2, "suma")
+    </script>
+</body>
+
+</html>
