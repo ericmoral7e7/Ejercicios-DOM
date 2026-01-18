@@ -23,7 +23,9 @@
 
     <div class="ejercicio">
         <h3>Ejercicio 1</h3>
-        <p>Crea una función llamada saludar que tenga un parámetro obligatorio, nombre, y un parámetro opcional, saludo, que por defecto sea "Hola". La función debe devolver un saludo personalizado utilizando el nombre proporcionado y, el saludo adicional.
+        <p>Crea una función llamada saludar que tenga un parámetro obligatorio, nombre, y un parámetro opcional, saludo,
+            que por defecto sea "Hola". La función debe devolver un saludo personalizado utilizando el nombre
+            proporcionado y, el saludo adicional.
         </p>
         <div class="resultado" id="resultado1">
             <!-- Aquí es dónde ira el teclado. -->
@@ -34,7 +36,9 @@
 
     <div class="ejercicio">
         <h3>Ejercicio 2</h3>
-        <p>Crea una función llamada calcular que reciba dos números como parámetros obligatorios, num1 y num2, y un parámetro opcional, operacion, que represente la operación matemática a realizar (por defecto, suma). La función debe devolver el resultado de la operación especificada entre los dos números.
+        <p>Crea una función llamada calcular que reciba dos números como parámetros obligatorios, num1 y num2, y un
+            parámetro opcional, operacion, que represente la operación matemática a realizar (por defecto, suma). La
+            función debe devolver el resultado de la operación especificada entre los dos números.
 
         </p>
         <div class="resultado" id="resultado2">
@@ -45,35 +49,59 @@
     </div>
 
     <script>
-        function saludar(nombre, saludo="Hola"){
+        function saludar(nombre, saludo = "Hola") {
             return `${saludo} ${nombre}`
         }
 
-        function calcular(num1, num2, operacion="suma"){
-            let resultado 
-            switch(operacion){
+        function calcular(num1, num2, operacion = "suma") {
+            let resultado
+            switch (operacion) {
                 case "suma":
                     resultado = num1 + num2
-                break;
+                    break;
 
                 case "resta":
                     resultado = num1 - num2
-                break;
+                    break;
 
                 case "multiplicacion":
                     resultado = num1 * num2
-                break;
+                    break;
 
                 case "division":
                     resultado = num1 / num2
-                break;
+                    break;
             }
 
             return resultado
         }
 
+        function calcularPromedio() {
+            let suma = 0;
+            for (let i = 0; i < arguments.length; i++) {
+                suma += arguments[i];
+            }
+            return suma / arguments.length
+        }
+
+        function concatenarNombres() {
+            let resultado = "";
+            for (let x of arguments)  {
+                resultado += x;
+            }
+            return resultado
+        }
+
         document.getElementById("resultado1").innerText = saludar("Èric")
-        document.getElementById("resultado2").innerText = calcular(1,2, "suma")
+        document.getElementById("resultado2").innerText = calcular(1, 2, "suma")
+        console.log(calcularPromedio(4,5))
+        console.log(concatenarNombres('Èric', 'Jorge'))
+
+        // De los ejercicios anteriores puede reescribir algo de código usando funciones flecha o anónimas?
+        const saludarFlecha = (nombre, saludo = "Hola") => `${saludo} ${nombre}`
+
+        
+        console.log(saludarFlecha("Èric"))
     </script>
 </body>
 
