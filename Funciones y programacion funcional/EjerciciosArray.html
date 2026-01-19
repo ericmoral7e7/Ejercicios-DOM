@@ -41,17 +41,17 @@
                 suma += Number(array[i])
             }
             console.log(suma)
-            media = suma / (array.length - 2)
+            let media = suma / (array.length - 2)
             array.push(media)
         }
 
         function filtrarZ(array) {
-            let nuevoArray = []; 
+            let nuevoArray = [];
 
             for (let i = 0; i < array.length; i++) {
                 let palabra = array[i];
                 if (palabra[0] !== "Z") {
-                    nuevoArray.push(palabra); 
+                    nuevoArray.push(palabra);
                 }
             }
             return nuevoArray;
@@ -61,7 +61,43 @@
         let datos = ["Rodriguez", "8", 9, '5', 4, 'Clara']
         ordenDatos(datos)
         console.log(datos)
+
+        //Dado un array con los días de la semana
+        // Obtén el primer día que empieza por ‘M’.
+        // Obtén la posición del día que empieza por ‘V’.
+        // Indica si algún día empieza por ‘S’. 
+        // Indica si todos los días acaban por ‘s’.
+        let diesSetmana = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo']
+
+        let primeraLetraM = diesSetmana.find(dia => dia[0] == 'M')
+        console.log(`El primer dia de la setmana que comença per M es: ${primeraLetraM}`)
+
+        let posicionPrimeraLetraV = diesSetmana.findIndex(dia => dia[0] == 'V')
+        console.log(`La posició del dia que comença per V és ${posicionPrimeraLetraV}`)
+
+        let algunoEmpiezaPorS = diesSetmana.some(dia => dia[0] == 'S')
+        console.log(`Alguno empieza por S? ${algunoEmpiezaPorS}`)
+
+        let todosAcabanPorS = diesSetmana.every(dia => dia[0] == 'S')
+        console.log(`Todos empiezan por S? ${todosAcabanPorS}`)
+
+        //Dado un array con las siguientes notas [3.4, 7.9, 8.0, 2.5, 5.6, 5.4, 9.0]
+        // Calcula la nota media
+        // Obtén la primera nota superior a 5
+        // Las notas son sobre 10, cambialas a sobre 20.
+        let notas = [3.4, 7.9, 8.0, 2.5, 5.6, 5.4, 9.0]
+
+        let sumaNotas = notas.reduce((total,nota)  => total+nota, 0)
+        let media = sumaNotas / notas.length
+        console.log(`Nota media: ${media.toFixed(2)}`)
+
+        let primeraNotaMayorde5 = notas.find(nota => nota > 5)
+        console.log(`Primera nota mayor de 5: ${primeraNotaMayorde5}`)
+
+        notas = notas.map(nota => nota * 2)
+        console.log(`Notes sobre 20: ${notas}`)
     </script>
 </body>
 
 </html>
+
