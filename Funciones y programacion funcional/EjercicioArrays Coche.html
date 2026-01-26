@@ -50,7 +50,8 @@
         console.log(`Coche ordenados:`)
         console.log(coches.sort((cocheA, cocheB) => cocheB[3] - cocheA[3]))
 
-        console.log(coches.map(([marca, modelo, ano , precio]) => [marca,modelo ,ano , precio - precio * 0.20])) 
+        console.log(`Coches con el precio reducido un 20%:`)
+        console.log(coches.map(([marca, modelo, ano, precio]) => [marca, modelo, ano, precio - precio * 0.20])) 
     </script>
 </body>
 

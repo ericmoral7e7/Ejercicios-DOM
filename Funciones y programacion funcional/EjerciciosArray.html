@@ -33,6 +33,15 @@
             return suma
         }
 
+        //Corrección
+        const sumarParesAnonima = function (arraOfNumbers){
+            let result = 0
+            arraOfNumbers.forEach(number => {
+                number % 2 == 0 ? result += number : 0
+            });
+            return result
+        }
+
         function ordenDatos(array) {
             array.unshift(array[5])
             array.pop()
@@ -55,6 +64,12 @@
                 }
             }
             return nuevoArray;
+        }
+
+        //Correccion
+        function filtrarZCorrecion(array) {
+            let resultat = array.filter(palabra => !palabra.toUpperCase().startsWith('Z'))
+            return resultat;
         }
 
         console.log(sumaPares([2, 4, 5, 6, 7, 8, 3, 1, 10, 4]))
