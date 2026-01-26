@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1 - Tipo Numbers</title>
+    <style>
+        #capa {
+            width: 500px;
+            height: 500px;
+            background-color: rgb(240, 101, 101);
+            
+        }
+
+        .boton{
+            margin-bottom: 10px;
+            width: 300px; height: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <button class="boton", id="boton1">Prueba Click</button>
+    <button class="boton", id="boton2">Prueba Doble Click</button>
+    <div id="capa"></div>
+    <p id="parrafo"></p>
+    
+    <script>
+        let boton1 = document.getElementById('boton1')
+        let boton2 = document.getElementById('boton2')
+        let capa = document.getElementById('capa')
+        let parrafo = document.getElementById('parrafo')
+
+        boton1.addEventListener("click", () => alert("Se ha clicado el botón!!!"))
+        boton2.addEventListener("dblclick", () => alert("Doble click!!!"))
+
+        capa.addEventListener("mousemove", (eventInfo) => parrafo.innerText = `XPosition = ${eventInfo.clientX}, YPosition = ${eventInfo.clientY}`)
+
+        document.addEventListener("keydown", (eventInfo) => event.key === "Enter" ? alert("Enter"): undefined)
+    </script>
+</body>
+
+</html>

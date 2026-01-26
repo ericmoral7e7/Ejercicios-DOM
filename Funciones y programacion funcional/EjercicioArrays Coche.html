@@ -44,11 +44,13 @@
             ["Mercedes", "Calse D", 2011, 21221]
         ];
 
-        let nuevosCoche = coches.filter(coche => (coche[0] != "Alfa Romeo" && coche[0] != "Kia" && (2026 - coche[2]) > 20))
-        console.log(`Coches filtrados ${nuevosCoche}`)
+        let nuevosCoche = coches.filter( ([marca, modelo, ano] = coche) => (marca != "Alfa Romeo" && modelo != "Kia" && (2026 - ano) > 20))
+        console.log(`Coches filtrados`)
+        console.log(nuevosCoche)
 
         console.log(`Coche ordenados:`)
-        console.log(coches.sort((cocheA, cocheB) => cocheB[3] - cocheA[3]))
+        console.log(coches.sort(([[, , , preuA]]= cocheA, [, , , preuB] = cocheB) => preuB - preuA))
+
 
         console.log(`Coches con el precio reducido un 20%:`)
         console.log(coches.map(([marca, modelo, ano, precio]) => [marca, modelo, ano, precio - precio * 0.20])) 
