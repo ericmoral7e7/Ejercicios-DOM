@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1 - Tipo Numbers</title>
+    <style>
+        #capa {
+            width: 50px;
+            height: 50px;
+            background-color: rgb(240, 101, 101);
+            position: absolute;
+            bottom: 200px;
+        }
+
+        .boton{
+            margin-bottom: 10px;
+            width: 300px; height: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="capa"></div>
+    
+    <script>
+        let capa = document.getElementById('capa')
+
+        document.addEventListener("mousemove", (eventInfo) => capa.style.left = `${eventInfo.clientX - capa.offsetWidth / 2}px`)
+
+    </script>
+</body>
+
+</html>
