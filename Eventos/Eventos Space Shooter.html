@@ -54,7 +54,7 @@
                 
                 let intervalo = setInterval(() => {
                     let currentBottom = parseInt(bala.style.bottom)
-                    bala.style.bottom = (currentBottom + 5) + 'px'
+                    bala.style.bottom = (currentBottom + 10) + 'px'
 
                     if (currentBottom > window.innerHeight) {
                         clearInterval(intervalo)
@@ -63,7 +63,6 @@
                 }, 30)
             }
         })
-
     </script>
 </body>
 
