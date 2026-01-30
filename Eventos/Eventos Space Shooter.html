@@ -41,27 +41,33 @@
 
         document.addEventListener("mousemove", (eventInfo) => nave.style.left = `${eventInfo.clientX - nave.offsetWidth / 2}px`)
 
+        let canShoot = true
         document.addEventListener("keydown", (eventInfo) => {
-            if (eventInfo.key === " ") {
-                let bala = document.createElement('div')
-                bala.className = 'bala'
-                document.body.appendChild(bala)
+            if (eventInfo.key === " " && canShoot) {
+                    canShoot = false
 
-                bala.style.left = `${(nave.offsetLeft + (nave.offsetWidth / 2) - (bala.offsetWidth / 2))}px`
-                bala.style.bottom = parseInt(getComputedStyle(nave).bottom) + nave.offsetHeight + 'px'
+                    //Crear bala
+                    let bala = document.createElement('div')
+                    bala.className = 'bala'
+                    document.body.appendChild(bala)
 
-                
+                    //Posicionar bala
+                    bala.style.left = `${(nave.offsetLeft + (nave.offsetWidth / 2) - (bala.offsetWidth / 2))}px`
+                    bala.style.bottom = parseInt(getComputedStyle(nave).bottom) + nave.offsetHeight + 'px'
 
-                
-                let intervalo = setInterval(() => {
-                    let currentBottom = parseInt(bala.style.bottom)
-                    bala.style.bottom = (currentBottom + 10) + 'px'
+                    //Crear movimiento bala
+                    let intervalo = setInterval(() => {
+                        let currentBottom = parseInt(bala.style.bottom)
+                        bala.style.bottom = (currentBottom + 12) + 'px'
 
-                    if (currentBottom > window.innerHeight) {
-                        clearInterval(intervalo)
-                        bala.remove()
-                    }
-                }, 30)
+                        if (currentBottom > window.innerHeight) {
+                            clearInterval(intervalo)
+                            bala.remove()
+                        }
+                    }, 10)
+
+
+                   const idTimeoutCanShoot = setTimeout(() => canShoot = true, 150);
             }
         })
     </script>
