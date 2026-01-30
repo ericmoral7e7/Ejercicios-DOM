@@ -45,11 +45,12 @@
             if (eventInfo.key === " ") {
                 let bala = document.createElement('div')
                 bala.className = 'bala'
-
-                bala.style.left = `${nave.offsetLeft + nave.offsetWidth / 2 - bala.offsetWidth / 2}px`
-                bala.style.bottom = '200px' 
-
                 document.body.appendChild(bala)
+
+                bala.style.left = `${(nave.offsetLeft + (nave.offsetWidth / 2) - (bala.offsetWidth / 2))}px`
+                bala.style.bottom = parseInt(getComputedStyle(nave).bottom) + nave.offsetHeight + 'px'
+
+                
 
                 
                 let intervalo = setInterval(() => {
