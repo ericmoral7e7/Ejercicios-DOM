@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let coche = {
+            marca: "Toyota",
+            modelo: "Corolla",
+            ano: 2020,
+            encendido: false,
+            kilometraje: 0,
+            arrancar: function(){
+                this.encendido = true
+                console.log("Coche encendido")
+            },
+            apagar: function(){
+                this.encendido = false,
+                console.log("Coche apagado")
+            },
+            recorrer: function(km){
+                this.kilometraje += km 
+                console.log(`Se han recorrido ${km}km, kilometraje total = ${this.kilometraje}km`)
+            }
+        };
+
+        coche.arrancar()
+        coche.apagar()
+        coche.recorrer(5)
+        coche.recorrer(10)
+    </script>
+</body>
+
+</html>

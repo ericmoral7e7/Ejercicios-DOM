@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        caracteristicasIniciales = ["pulgadas", "color", "resolucion"]
+        let tvSamsung = {}
+
+        for (x of caracteristicasIniciales) {
+            tvSamsung[x] = prompt(`Inserta la siguiente información: ${x}`)
+        }
+
+        caracteristicasAComprobar = ["pulgadas", "color", "resolucion", "marca"]
+        for (x of caracteristicasAComprobar) {
+            tvSamsung[x] = tvSamsung[x] ?? "default value";
+        }
+
+        parrafo = document.createElement("p")
+        parrafo.innerText = JSON.stringify(tvSamsung)
+        document.body.appendChild(parrafo)
+
+    </script>
+</body>
+
+</html>

@@ -10,6 +10,7 @@
 
 <body>
     <script>
+        //Crea un objeto llamado tvSamsung con las propiedades
         let tvSamsung =
         {
             nombre: "TV Samsung 42''",
@@ -23,10 +24,15 @@
 
         }
 
+        //Prueba de getImporte
+        console.log(tvSamsung.getImporte())
+
+        //Muestra los datos en pantalla (nombreAtributo: Valor)
         for (campo in tvSamsung) {
             console.log(`${campo}: ${tvSamsung[campo]}`)
         }
 
+        //Obtén el string que corresponde al JSON de tvSamsung.
         let tvSamsungAsJSON = JSON.stringify(tvSamsung)
         console.log(tvSamsungAsJSON)
     </script>

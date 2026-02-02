@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let usuarios = [
+            {
+                nombre: "Persona1",
+                edad: 19,
+                email: "persona1@gmail.com"
+            },
+
+            {
+                nombre: "Persona2",
+                edad: 30,
+                email: "persona2@gmail.com"
+            },
+
+            {
+                nombre: "Persona3",
+                edad: 5,
+                email: "persona3@gmail.com"
+            }
+        ]
+
+        function mostrarUsuarios() {
+            for (let usuario of usuarios) {
+                console.log(`Nombre: ${usuario.nombre}, Edad: ${usuario.edad}, Email: ${usuario.email}`);
+            }
+        }
+
+
+        for (usuario of usuarios) {
+            usuarios.saludar = function () {
+                console.log(`Soy ${this.nombre}`)
+            }
+        }
+
+        for (usuario of usuarios) {
+            usuarios.saludar()
+        }
+    </script>
+</body>
+
+</html>
