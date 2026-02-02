@@ -1,25 +1,50 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ejercicio 1 - Tipo Numbers</title>
+    <title>Ejercicios Coches</title>
     <style>
-        .ejercicio {
-            border: 1px black solid;
-            border-radius: 5px;
-            margin-bottom: 15px;
+        body {
+            font-family: sans-serif;
+        }
+        
+        .contenedor {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 30px;
         }
 
-        .resultado {
-            background-color: rgb(195, 192, 192);
+        .ficha {
+            background-color: #be8125;
+            color: white;
+            width: 120px;
+            height: 120px;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            font-size: 14px;
+        }
+
+        .ficha span {
+            margin-top: 5px;
         }
     </style>
 </head>
 
 <body>
-    <h1 id="titulo">Ejercicios - Tipo numbers</h1>
+    <h1>Ejercicios - Tipo numbers</h1>
+
+    <h3>1. Coches filtrados</h3>
+    <div id="contenedor-filtrados" class="contenedor"></div>
+
+    <h3>2. Coches ordenado por precio</h3>
+    <div id="contenedor-ordenados" class="contenedor"></div>
+
+    <h3>3. Coches rebajados</h3>
+    <div id="contenedor-rebajados" class="contenedor"></div>
 
     <script>
         let coches = [
@@ -44,17 +69,38 @@
             ["Mercedes", "Calse D", 2011, 21221]
         ];
 
-        let nuevosCoche = coches.filter( ([marca, modelo, ano] = coche) => (marca != "Alfa Romeo" && modelo != "Kia" && (2026 - ano) > 20))
-        console.log(`Coches filtrados`)
-        console.log(nuevosCoche)
+        let nuevosCoche = coches.filter(([marca, modelo, ano]) => (marca != "Alfa Romeo" && modelo != "Kia" && (2026 - ano) > 20))
+        
+        let contenedorFiltrados = document.getElementById("contenedor-filtrados")
+        
+        nuevosCoche.forEach(coche => {
+            let elemento = document.createElement('div')
+            elemento.className = "ficha"
+            elemento.innerHTML = `<b>${coche[0]}</b><span>${coche[1]}</span><span>${coche[2]}</span>`
+            contenedorFiltrados.appendChild(elemento)
+        })
 
-        console.log(`Coche ordenados:`)
-        console.log(coches.sort(([[, , , preuA]]= cocheA, [, , , preuB] = cocheB) => preuB - preuA))
+        coches.sort(([, , , preuA], [, , , preuB]) => preuB - preuA)
 
+        let contenedorOrdenados = document.getElementById("contenedor-ordenados")
+        
+        coches.forEach(coche => {
+            let elemento = document.createElement('div')
+            elemento.className = "ficha"
+            elemento.innerHTML = `<b>${coche[0]}</b><span>${coche[1]}</span><span>${coche[3]}€</span>`
+            contenedorOrdenados.appendChild(elemento)
+        })
 
-        console.log(`Coches con el precio reducido un 20%:`)
-        console.log(coches.map(([marca, modelo, ano, precio]) => [marca, modelo, ano, precio - precio * 0.20])) 
+        let cochesRebajados = coches.map(([marca, modelo, ano, precio]) => [marca, modelo, ano, precio - precio * 0.20])
+
+        let contenedorRebajados = document.getElementById("contenedor-rebajados")
+
+        cochesRebajados.forEach(coche => {
+            let elemento = document.createElement('div')
+            elemento.className = "ficha"
+            elemento.innerHTML = `<b>${coche[0]}</b><span>${coche[1]}</span><span>${coche[3]}€</span>`
+            contenedorRebajados.appendChild(elemento)
+        })
     </script>
 </body>
-
 </html>
