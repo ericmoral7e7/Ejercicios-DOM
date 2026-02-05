@@ -1,3 +1,6 @@
+*{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 /* Contenedor de camisetas */
 #tshirts {
     display: flex;
@@ -6,7 +9,6 @@
     gap: 20px; 
     padding: 20px;
     width: 100%;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 /* Tarjeta de cada camiseta */
@@ -62,4 +64,51 @@
     padding: 8px;
     border-radius: 6px;
     border: 1px solid #ccc;
+}
+
+/* HEADER */
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo h1 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+}
+
+header nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+header nav ul li a:hover {
+    text-decoration: underline;
+}
+
+/* FOOTER */
+footer {
+    background-color: #222;
+    color: #ccc;
+    text-align: center;
+    padding: 15px 20px;
+    margin-top: 30px;
+    font-size: 0.9rem;
+}
+
+.precio{
+    color: green;
 }

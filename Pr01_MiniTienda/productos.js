@@ -66,7 +66,7 @@ function init() {
     articulo.className = "camiseta"
 
     let imagen = document.createElement('img')
-    let primerColor = camiseta.colores[0]; // "blanco"
+    let primerColor = camiseta.colores[0];
     imagen.setAttribute('src', camiseta.imagenes[primerColor]);
 
     let titulo = document.createElement('h3')
@@ -76,20 +76,21 @@ function init() {
     descripcion.innerText = camiseta.descripcion
 
     let precio = document.createElement('p')
+    precio.className = "precio"
     precio.innerText = `${camiseta.precioBase}€`
 
     //TALLA
-    let divTallas = document.createElement('select')
+    let selectTallas = document.createElement('select')
     let tallas = camiseta.tallas
     tallas.forEach(talla => {
-      divTallas.innerHTML += `<option value="${talla}">${talla}</option>`
+      selectTallas.innerHTML += `<option value="${talla}">${talla}</option>`
     });
 
     //Colores
-    let divColores = document.createElement('select')
+    let selectColores = document.createElement('select')
     let colores = camiseta.colores
     colores.forEach(color => {
-      divColores.innerHTML += `<option value="${color}">${color}</option>`
+      selectColores.innerHTML += `<option value="${color}">${color.toUpperCase()}</option>`
     });
 
     //Boton
@@ -99,13 +100,11 @@ function init() {
 
     });
 
-
-
     articulo.appendChild(imagen)
     articulo.appendChild(titulo)
     articulo.appendChild(descripcion)
-    articulo.appendChild(divTallas)
-    articulo.appendChild(divColores)
+    articulo.appendChild(selectTallas)
+    articulo.appendChild(selectColores)
     articulo.appendChild(precio)
     articulo.appendChild(boton)
 
