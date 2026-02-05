@@ -2,11 +2,11 @@
 #tshirts {
     display: flex;
     justify-content: space-around;
-    flex-wrap: wrap; /* Para que se adapte a pantallas pequeñas */
-    gap: 20px; /* Separación uniforme entre elementos */
+    flex-wrap: wrap; 
+    gap: 20px; 
     padding: 20px;
     width: 100%;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fuente más moderna */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 /* Tarjeta de cada camiseta */
@@ -14,10 +14,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #e0e0e0; /* Gris más suave */
+    background-color: #e0e0e0; 
     border-radius: 12px;
     padding: 25px;
-    transition: transform 0.2s ease; /* Pequeño efecto al pasar el mouse */
+    transition: transform 0.2s ease; 
 }
 
 .camiseta:hover {
@@ -33,7 +33,7 @@
 
 /* Título de la camiseta */
 .camiseta h3 {
-    color: #f0c94d; /* Amarillo más suave */
+    color: #f0c94d; 
     font-size: 1.3rem;
     margin-bottom: 15px;
     text-align: center;
