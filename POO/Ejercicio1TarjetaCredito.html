@@ -18,7 +18,7 @@
             #_marca;
 
             #_cantidadDinero;
-            #_estado
+            #_tarjetaActiva
 
             //Constructor
             constructor(numeroTarjeta, nombreTitular, fechaExpiracion, codigoSeguridad, marca) {
@@ -29,28 +29,28 @@
                 this.#_marca = marca
 
                 this.#_cantidadDinero = 500
-                this.#_estado = true
+                this.#_tarjetaActiva = true
             }
 
             //Métodos
             anular() {
-                this.#_estado = false
+                this.#_tarjetaActiva = false
             }
 
             activar() {
-                this.#_estado = true
+                this.#_tarjetaActiva = true
             }
 
             pagar(cantidad) {
                 this.#_cantidadDinero -= cantidad
             }
 
-            cambiarPin(nuevoPin){
+            set codigoSeguridad(nuevoPin){
                 this.#_codigoSeguridad = nuevoPin
             }
 
             mostrar(){
-                console.log(`${this.#_nombreTitular}, tu tarjeta ${this.#_marca} con número ${this.#_numeroTarjeta} tiene un saldo de ${this.#_cantidadDinero} y su estado es ${this.#_estado ? "activa" : "anulada"}`)
+                console.log(`${this.#_nombreTitular}, tu tarjeta ${this.#_marca} con número ${this.#_numeroTarjeta} tiene un saldo de ${this.#_cantidadDinero} y su estado es ${this.#_tarjetaActiva ? "activa" : "anulada"}`)
             }
         }
 
@@ -69,7 +69,7 @@
         //Prueba cambiarPin
         let tarjeta3 = new TarjetaCredito("1111 2222 3333 4444", "Pedro Martínez", "10/23", "789", "American Express")
         tarjeta3.mostrar()
-        tarjeta3.cambiarPin("321")
+        tarjeta3.codigoSeguridad = "321"
         tarjeta3.mostrar()
     </script>
 </body>

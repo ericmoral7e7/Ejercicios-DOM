@@ -80,11 +80,23 @@ camisetas.forEach(camiseta => {
   //TALLA
   let divTallas = document.createElement('select')
   let tallas = camiseta.tallas
-  tallas.array.forEach(talla => {
+  tallas.forEach(talla => {
       divTallas.innerHTML += `<option value="${talla}">${talla}</option>`
   });
 
-  //COLORES
+  //Colores
+  let divColores = document.createElement('select')
+  let colores = camiseta.colores
+  colores.forEach(color => {
+      divColores.innerHTML += `<option value="${color}">${color}</option>`
+  });
+
+  //Boton
+  let boton = document.createElement('button')
+  boton.innerText = "Añadir al carrito" 
+  boton.addEventListener('click', () => {
+
+  });
 
 
 
@@ -92,6 +104,9 @@ camisetas.forEach(camiseta => {
   articulo.appendChild(titulo)
   articulo.appendChild(descripcion)
   articulo.appendChild(divTallas)
+  articulo.appendChild(divColores)
   articulo.appendChild(precio)
+  articulo.appendChild(boton)
+  
   contenedor.appendChild(articulo)
 });

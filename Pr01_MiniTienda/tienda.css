@@ -1,27 +1,57 @@
-#tshirts{
+/* Contenedor de camisetas */
+#tshirts {
     display: flex;
     justify-content: space-around;
-    width: 100;
+    flex-wrap: wrap; /* Para que se adapte a pantallas pequeñas */
+    gap: 20px; /* Separación uniforme entre elementos */
+    padding: 20px;
+    width: 100%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fuente más moderna */
 }
 
-.camiseta{
+/* Tarjeta de cada camiseta */
+.camiseta {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: rgb(143, 143, 143);
-    border-radius: 10px;
-    padding: 30px;
+    background-color: #e0e0e0; /* Gris más suave */
+    border-radius: 12px;
+    padding: 25px;
+    transition: transform 0.2s ease; /* Pequeño efecto al pasar el mouse */
 }
 
-.camiseta img{
-    width: 300px;
+.camiseta:hover {
+    transform: translateY(-5px);
 }
 
-.camiseta h3{
-    color: rgb(233, 201, 58);
+.camiseta img {
+    width: 280px; 
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 15px;
 }
 
-.camiseta button{
-     width: 80%;
-     background-color: firebrick;
+/* Título de la camiseta */
+.camiseta h3 {
+    color: #f0c94d; /* Amarillo más suave */
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+/* Botón de acción */
+.camiseta button {
+    width: 85%;
+    background-color: #b22222; 
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 0;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.camiseta button:hover {
+    background-color: #8b1a1a; 
 }
