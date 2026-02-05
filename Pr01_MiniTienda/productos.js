@@ -55,58 +55,60 @@ const productosJSON = `[
 ]
 `;
 
-let camisetas = JSON.parse(productosJSON);
+function init() {
+  let camisetas = JSON.parse(productosJSON);
 
-let contenedor = document.getElementById("tshirts");
+  let contenedor = document.getElementById("tshirts");
 
-camisetas.forEach(camiseta => {
+  camisetas.forEach(camiseta => {
 
-  let articulo = document.createElement("article");
-  articulo.className = "camiseta"
+    let articulo = document.createElement("article");
+    articulo.className = "camiseta"
 
-  let imagen = document.createElement('img')
-  let primerColor = camiseta.colores[0]; // "blanco"
-  imagen.setAttribute('src', camiseta.imagenes[primerColor]);
+    let imagen = document.createElement('img')
+    let primerColor = camiseta.colores[0]; // "blanco"
+    imagen.setAttribute('src', camiseta.imagenes[primerColor]);
 
-  let titulo = document.createElement('h3')
-  titulo.innerText = camiseta.nombre
+    let titulo = document.createElement('h3')
+    titulo.innerText = camiseta.nombre
 
-  let descripcion = document.createElement('p')
-  descripcion.innerText = camiseta.descripcion
+    let descripcion = document.createElement('p')
+    descripcion.innerText = camiseta.descripcion
 
-  let precio = document.createElement('p')
-  precio.innerText = `${camiseta.precioBase}€`
+    let precio = document.createElement('p')
+    precio.innerText = `${camiseta.precioBase}€`
 
-  //TALLA
-  let divTallas = document.createElement('select')
-  let tallas = camiseta.tallas
-  tallas.forEach(talla => {
+    //TALLA
+    let divTallas = document.createElement('select')
+    let tallas = camiseta.tallas
+    tallas.forEach(talla => {
       divTallas.innerHTML += `<option value="${talla}">${talla}</option>`
-  });
+    });
 
-  //Colores
-  let divColores = document.createElement('select')
-  let colores = camiseta.colores
-  colores.forEach(color => {
+    //Colores
+    let divColores = document.createElement('select')
+    let colores = camiseta.colores
+    colores.forEach(color => {
       divColores.innerHTML += `<option value="${color}">${color}</option>`
+    });
+
+    //Boton
+    let boton = document.createElement('button')
+    boton.innerText = "Añadir al carrito"
+    boton.addEventListener('click', () => {
+
+    });
+
+
+
+    articulo.appendChild(imagen)
+    articulo.appendChild(titulo)
+    articulo.appendChild(descripcion)
+    articulo.appendChild(divTallas)
+    articulo.appendChild(divColores)
+    articulo.appendChild(precio)
+    articulo.appendChild(boton)
+
+    contenedor.appendChild(articulo)
   });
-
-  //Boton
-  let boton = document.createElement('button')
-  boton.innerText = "Añadir al carrito" 
-  boton.addEventListener('click', () => {
-
-  });
-
-
-
-  articulo.appendChild(imagen)
-  articulo.appendChild(titulo)
-  articulo.appendChild(descripcion)
-  articulo.appendChild(divTallas)
-  articulo.appendChild(divColores)
-  articulo.appendChild(precio)
-  articulo.appendChild(boton)
-  
-  contenedor.appendChild(articulo)
-});
+}
