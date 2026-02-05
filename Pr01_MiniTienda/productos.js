@@ -60,23 +60,38 @@ let camisetas = JSON.parse(productosJSON);
 let contenedor = document.getElementById("tshirts");
 
 camisetas.forEach(camiseta => {
-  
-    let articulo = document.createElement("article");
-    
-  
-    articulo.className = "camiseta"
 
-    let primerColor = camiseta.colores[0]; 
-    let rutaImagen = camiseta.imagenes[primerColor];
+  let articulo = document.createElement("article");
+  articulo.className = "camiseta"
 
-    articulo.innerHTML = `
-        <img src="${rutaImagen}" alt="${camiseta.nombre}" width="200">
-        <h3>${camiseta.nombre}</h3>
-        <p>${camiseta.descripcion}</p>
-        <p>${camiseta.precioBase}€</p>
-        <button>Añadir al carrito</button>
-    `;
+  let imagen = document.createElement('img')
+  let primerColor = camiseta.colores[0]; // "blanco"
+  imagen.setAttribute('src', camiseta.imagenes[primerColor]);
+
+  let titulo = document.createElement('h3')
+  titulo.innerText = camiseta.nombre
+
+  let descripcion = document.createElement('p')
+  descripcion.innerText = camiseta.descripcion
+
+  let precio = document.createElement('p')
+  precio.innerText = `${camiseta.precioBase}€`
+
+  //TALLA
+  let divTallas = document.createElement('select')
+  let tallas = camiseta.tallas
+  tallas.array.forEach(talla => {
+      divTallas.innerHTML += `<option value="${talla}">${talla}</option>`
+  });
+
+  //COLORES
 
 
-    contenedor.appendChild(articulo);
+
+  articulo.appendChild(imagen)
+  articulo.appendChild(titulo)
+  articulo.appendChild(descripcion)
+  articulo.appendChild(divTallas)
+  articulo.appendChild(precio)
+  contenedor.appendChild(articulo)
 });

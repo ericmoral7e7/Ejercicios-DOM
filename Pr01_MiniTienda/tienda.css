@@ -13,6 +13,10 @@
     padding: 30px;
 }
 
+.camiseta img{
+    width: 300px;
+}
+
 .camiseta h3{
     color: rgb(233, 201, 58);
 }
