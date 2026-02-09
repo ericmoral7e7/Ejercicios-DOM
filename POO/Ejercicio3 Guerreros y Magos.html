@@ -9,6 +9,8 @@
 
 <body>
     <script>
+
+        //======== PERSONAJES ========
         class Personaje {
             nombre;
             nivel;
@@ -25,15 +27,14 @@
 
 
         class Guerrero extends Personaje {
-            fuerza;
+            arma;
 
-            constructor(nombre, nivel, puntosDeVida, fuerza) {
+            constructor(nombre, nivel, puntosDeVida) {
                 super(nombre, nivel, puntosDeVida);
-                this.fuerza = fuerza
             }
 
             atacar() {
-                console.log(`${this.nombre} realiza un golpe de espada! con una fuerza de ${this.fuerza}`)
+                console.log(`${this.nombre} realiza un golpe de espada! con una fuerza de ${this.arma}`)
             }
 
             toString() {
@@ -42,7 +43,7 @@
         }
 
         class Mago extends Personaje {
-            mana;
+            arma;
 
             constructor(nombre, nivel, puntosDeVida, mana) {
                 super(nombre, nivel, puntosDeVida);
@@ -58,6 +59,17 @@
             }
         }
 
+        //======== ARMAS ========
+        class Espada{
+            constructor(fuerza) {
+                this.fuerza = fuerza
+            }
+
+            hacerDaño() {
+                return this.fuerza
+            }
+        }
+
     
         let guerrero1 = new Guerrero("Thor", 5, 100, 20)
         let mago1 = new Mago("Gandalf", 10, 80, 50)
@@ -65,6 +77,8 @@
         let personajes = []
         personajes.push(guerrero1, mago1)
 
+
+        console.log("Atacando con todos los personajes:")
         for (let personaje of personajes) {
             personaje.atacar()
         }
