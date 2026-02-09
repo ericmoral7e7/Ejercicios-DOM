@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        class Personaje {
+            nombre;
+            nivel;
+            puntosDeVida;
+
+            constructor(nombre, nivel, puntosDeVida) {
+                this.nombre = nombre
+                this.nivel = nivel
+                this.puntosDeVida = puntosDeVida
+            }
+
+            atacar() {}
+        }
+
+
+        class Guerrero extends Personaje {
+            fuerza;
+
+            constructor(nombre, nivel, puntosDeVida, fuerza) {
+                super(nombre, nivel, puntosDeVida);
+                this.fuerza = fuerza
+            }
+
+            atacar() {
+                console.log(`${this.nombre} realiza un golpe de espada! con una fuerza de ${this.fuerza}`)
+            }
+
+            toString() {
+                return `${this.nombre} el guerrero (Nivel ${this.nivel})`
+            }
+        }
+
+        class Mago extends Personaje {
+            mana;
+
+            constructor(nombre, nivel, puntosDeVida, mana) {
+                super(nombre, nivel, puntosDeVida);
+                this.mana = mana
+            }
+
+            atacar() {
+                console.log(`${this.nombre} lanza un hechizo! con un costo de mana de ${this.mana}`)
+            }
+
+            toString() {
+                return `${this.nombre} el mago (Nivel ${this.nivel})`
+            }
+        }
+
+    
+        let guerrero1 = new Guerrero("Thor", 5, 100, 20)
+        let mago1 = new Mago("Gandalf", 10, 80, 50)
+
+        let personajes = []
+        personajes.push(guerrero1, mago1)
+
+        for (let personaje of personajes) {
+            personaje.atacar()
+        }
+
+        personajes.sort((personajeA, personajeB) => personajeB.nivel - personajeA.nivel)
+
+        console.log("\n")
+        console.log("\n")
+        console.log("Personajes ordenados por nivel:")
+        for (let personaje of personajes) {
+            console.log(`${personaje}`)
+        }
+
+    </script>
+</body>
+
+</html>
