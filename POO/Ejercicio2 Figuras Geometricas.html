@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        class FiguraGeometrica {
+            nombre;
+
+            constructor(nombre) {
+                this.nombre = nombre
+            }
+
+            calcularArea() {
+                console.error("El método calcularArea() debe ser implementado por la subclase");
+                //throw new Error('El método calcularArea() debe ser implementado por la subclase');
+            }
+        }
+
+
+        class Rectangulo extends FiguraGeometrica {
+
+            base;
+            altura;
+
+            constructor(nombre, base, altura) {
+                super(nombre);
+                this.base = base
+                this.altura = altura
+            }
+
+            calcularArea() {
+                return this.base * this.altura;
+            }
+        }
+
+        class Triangulo extends FiguraGeometrica {
+
+            base;
+            altura;
+
+            constructor(nombre, base, altura) {
+                super(nombre);
+                this.base = base
+                this.altura = altura
+            }
+
+            calcularArea() {
+                return (this.base * this.altura) / 2;
+            }
+        }
+
+        class Circulo extends FiguraGeometrica {
+
+            radio;
+
+            constructor(nombre, radio) {
+                super(nombre);
+                this.radio = radio
+            }
+
+            calcularArea() {
+                return (Math.PI * (this.radio * this.radio)).toFixed(2);
+            }
+        }
+
+        let figuraGeometrica = new FiguraGeometrica("Figurita")
+        //console.log(figuraGeometrica.calcularArea())
+
+
+        let rectangulo = new Rectangulo("Rectangulito", 5, 5)
+        console.log(rectangulo.calcularArea())
+
+        let triangulo = new Triangulo("Triangulito", 5, 10)
+        console.log(triangulo.calcularArea())
+
+        let circulo = new Circulo("Circulito", 10)
+        console.log(circulo.calcularArea())
+
+    </script>
+</body>
+
+</html>
