@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChuckNorris</title>
+</head>
+
+<body>
+
+    <h1>Chistes ChuckNorris</h1>
+    <p id="chiste"></p>
+    <button id="boton">Nuevo Chiste</button>
+
+    <script defer>
+        async function getChiste() {
+            const res = await fetch("https://api.chucknorris.io/jokes/random");
+            if(!res.ok){
+                return "ERROR AL CARGAR EL CHISTE"
+            }
+            else {
+                const json = await res.json();
+                let chiste = json.value
+                updateScreen(chiste)
+            }
+        }
+
+        function updateScreen(chiste) {
+            let texto = document.getElementById("chiste")
+            texto.innerText = chiste
+        }
+
+        let boton = document.getElementById("boton")
+        boton.addEventListener("click", function () {
+            let chiste = getChiste()
+        })
+
+    </script>
+</body>
+
+</html>
