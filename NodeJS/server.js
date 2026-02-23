@@ -34,8 +34,7 @@ const server = createServer((req, res) => {
     if (req.method === "GET" && req.url.startsWith("/students/")) {
 
         // 1. Extraer id de la URL
-        let urlSplited = req.url.split("/")
-        let id = urlSplited[2]
+        let id = extraerIdStudent(req.url)
 
         // 2. Buscar alumno en el array
         let studentBuscado = students.find((student) => student.id === id)
@@ -43,9 +42,9 @@ const server = createServer((req, res) => {
         // 3. Si no existe → 404
         if (!studentBuscado) {
             return sendJson(res, 404, { error: "Alumno no encontrado" });
-        } // 4. Si existe → devolver 200 + alumno
-        else {
-            return sendJson(res, 200, students);
+        }
+        else { // 4. Si existe → devolver 200 + alumno
+            return sendJson(res, 200, studentBuscado);
         }
     }
 
@@ -53,16 +52,28 @@ const server = createServer((req, res) => {
     if (req.method === "DELETE" && req.url.startsWith("/students/")) {
 
         // 1. Extraer id
+        let id = extraerIdStudent(req.url)
+
         // 2. Comprobar si existe
+        let studentBuscado = students.find((student) => student.id === id)
+        if (!studentBuscado) {// 4. Si no existe → 404
+            return sendJson(res, 404, { error: "Alumno no encontrado" });
+        }
+
         // 3. Eliminarlo del array
-        // 4. Si no existe → 404
+        students = students.filter((student) => student !== studentBuscado);
+        
         // 5. Si se elimina → 204 (sin body)
+        return sendJson(res, 204);
 
     }
     // TODO 3: POST /students
     if (req.method === "POST" && req.url === "/students") {
 
         // 1. Leer el body con readBody() --> Es donde esta toda la info del nuevo alumno.
+        readBody(req, (res, alumno) => {
+            
+        })
         // 2. Validar que tenga id, nombre y curso
         // 3. Comprobar que el id no esté repetido
         // 4. Añadir al array students
@@ -88,6 +99,11 @@ const server = createServer((req, res) => {
     sendJson(res, 404, { message: "Not Found" });
 
 });
+
+function extraerIdStudent(url) {
+    let urlSplited = url.split("/")
+    return urlSplited[2]
+}
 
 
 /* TODO: Crear función que lea el body y devuelva el JSON parseado
