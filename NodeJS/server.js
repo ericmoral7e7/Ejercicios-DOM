@@ -62,7 +62,7 @@ const server = createServer((req, res) => {
 
         // 3. Eliminarlo del array
         students = students.filter((student) => student !== studentBuscado);
-        
+
         // 5. Si se elimina → 204 (sin body)
         return sendJson(res, 204);
 
@@ -71,29 +71,64 @@ const server = createServer((req, res) => {
     if (req.method === "POST" && req.url === "/students") {
 
         // 1. Leer el body con readBody() --> Es donde esta toda la info del nuevo alumno.
-        readBody(req, (res, alumno) => {
-            
-        })
-        // 2. Validar que tenga id, nombre y curso
-        // 3. Comprobar que el id no esté repetido
-        // 4. Añadir al array students
-        // 5. Devolver 201 + alumno creado
+        readBody(req, (err, alumno) => {
+            // 2. Validar que tenga id, nombre y curso
+            if (alumno.hasOwnProperty("id") && alumno.hasOwnProperty("nombre") && alumno.hasOwnProperty("curso")) {
+                // 3. Comprobar que el id no esté repetido
+                let existe = students.find((student) => student.id === alumno.id)
+                if (!existe) {
+                    // 4. Añadir al array students
+                    students.push(alumno)
 
+                    // 5. Devolver 201 + alumno creado
+                    return sendJson(res, 201, alumno);
+                }
+                else {
+                    return sendJson(res, 409, { error: "El ID ya existe" });
+                }
+            }
+            else {
+                return sendJson(res, 400, { error: "Faltan campos obligatorios" });
+            }
+        })
     }
 
     // TODO 4: PUT /students/:id
     if (req.method === "PUT" && req.url.startsWith("/students/")) {
 
         // 1. Extraer id
+        let id = extraerIdStudent(req.url)
+
         // 2. Buscar alumno
+        let studentBuscado = students.find((student) => student.id === id)
+
         // 3. Si no existe → 404
+        if (!studentBuscado) {
+            return sendJson(res, 404, { error: "Alumno no encontrado" });
+        }
+
         // 4. Leer body con readBody() --> Ahora será otra callback!!!
-        // 5. Actualizar campos enviados
-        // 6. Devolver 200 + alumno actualizado
+        // 4. Leer body
+        readBody(req, (err, alumnoActualizado) => {
 
+            if (err) {
+                return sendJson(res, 400, { error: "JSON inválido" });
+            }
+
+            // 5. Actualizar solo los campos enviados
+            if (alumnoActualizado.hasOwnProperty("nombre")) {
+                studentBuscado.nombre = alumnoActualizado.nombre;
+            }
+
+            if (alumnoActualizado.hasOwnProperty("curso")) {
+                studentBuscado.curso = alumnoActualizado.curso;
+            }
+
+            // 6. Devolver 200 + alumno actualizado
+            return sendJson(res, 200, studentBuscado);
+
+        });
     }
-
-
 
     // Si no coincide ningún endpoint
     sendJson(res, 404, { message: "Not Found" });
