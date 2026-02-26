@@ -4,7 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ChuckNorris</title>
+    <title>Buscador Pokemon</title>
+
+    <style>
+        #imagen-pokemon {
+            width: 500px;
+        }
+
+        #info-pokemon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+    </style>
 </head>
 
 <body>
@@ -12,13 +25,16 @@
     <h1>Buscar Pokemon</h1>
     <input id="buscador" type="text">
     <p id="chiste"></p>
-    <button id="boton">Nuevo Chiste</button>
+    <button id="boton">Buscar</button>
 
-    <h2 id="nombre-pokemon"></h2>
-    <p id="altura-pokemon"></p>
-    <p id="peso-pokemon"></p>
-    <img id="imagen-pokemon" src="" alt="">
-    <p id="tipos-pokemon"></p>
+    <div id="info-pokemon">
+        <h2 id="nombre-pokemon"></h2>
+        <p id="altura-pokemon"></p>
+        <p id="peso-pokemon"></p>
+        <img id="imagen-pokemon" src="" alt="">
+        <p id="tipos-pokemon"></p>
+    </div>
+
 
 
     <script defer>
@@ -51,8 +67,21 @@
         }
 
         let boton = document.getElementById("boton")
-        boton.addEventListener("click", function () {
-            let chiste = getPokemon()
+        
+        boton.addEventListener("click", async function () {
+            let pokemon = await getPokemon()
+            if (pokemon != "ERROR AL CARGAR EL POKEMON") {
+                nombrePokemon.innerText = `Pokémon: ${pokemon.name}`
+                pesoPokemon.innerText = `Peso: ${pokemon.weight}`
+                alturaPokemon.innerText = "Altura: " + pokemon.height
+                imagenPokemon.setAttribute("src", `${pokemon.sprites.front_default}`)
+            }
+            else {
+                nombrePokemon.innerText = pokemon
+                pesoPokemon.innerText = ""
+                alturaPokemon.innerText = ""
+                imagenPokemon.setAttribute("src", "")
+            }
         })
 
     </script>

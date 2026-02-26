@@ -43,9 +43,8 @@ const server = createServer((req, res) => {
         if (!studentBuscado) {
             return sendJson(res, 404, { error: "Alumno no encontrado" });
         }
-        else { // 4. Si existe → devolver 200 + alumno
-            return sendJson(res, 200, studentBuscado);
-        }
+        // 4. Si existe → devolver 200 + alumno
+        return sendJson(res, 200, studentBuscado);
     }
 
     // TODO 2: DELETE /students/:id
@@ -72,24 +71,20 @@ const server = createServer((req, res) => {
 
         // 1. Leer el body con readBody() --> Es donde esta toda la info del nuevo alumno.
         readBody(req, (err, alumno) => {
-            // 2. Validar que tenga id, nombre y curso
-            if (alumno.hasOwnProperty("id") && alumno.hasOwnProperty("nombre") && alumno.hasOwnProperty("curso")) {
-                // 3. Comprobar que el id no esté repetido
-                let existe = students.find((student) => student.id === alumno.id)
-                if (!existe) {
-                    // 4. Añadir al array students
-                    students.push(alumno)
 
-                    // 5. Devolver 201 + alumno creado
-                    return sendJson(res, 201, alumno);
-                }
-                else {
-                    return sendJson(res, 409, { error: "El ID ya existe" });
-                }
-            }
-            else {
+            // 2. Validar que tenga id, nombre y curso
+            if (!alumno.hasOwnProperty("id") || !alumno.hasOwnProperty("nombre") || !alumno.hasOwnProperty("curso")) {
                 return sendJson(res, 400, { error: "Faltan campos obligatorios" });
             }
+            // 3. Comprobar que el id no esté repetido
+            let existe = students.find((student) => student.id === alumno.id)
+            if (existe) return sendJson(res, 409, { error: "El ID ya existe" });
+
+
+            // 4. Añadir al array students
+            students.push(alumno)
+            // 5. Devolver 201 + alumno creado
+            return sendJson(res, 201, alumno);
         })
     }
 
@@ -131,7 +126,7 @@ const server = createServer((req, res) => {
     }
 
     // Si no coincide ningún endpoint
-    sendJson(res, 404, { message: "Not Found" });
+    sendJson(res, 404, { message: `Not Found ${req.url}` });
 
 });
 
