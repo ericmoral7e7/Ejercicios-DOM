@@ -35,6 +35,7 @@ export function create(notaNew) {
 
 export function update(id, payload) {
     const idx = notas.findIndex(n => n.id === id);
+    
     if (idx === -1) return null;
     if (payload && typeof payload === "object") {
         if (payload.nota !== undefined) notas[idx].nota = payload.nota;
